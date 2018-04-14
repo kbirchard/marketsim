@@ -1,9 +1,9 @@
-#Plain English Description of Simulation Model
+# Plain English Description of Simulation Model
 April 14, 2018
 
 There are 4 classes of agents:
 
-##Supplier: 
+## Supplier: 
 Supplies carbon storage services, represented by units called CRCs (Carbon Removal Credits). 
 
 Create 3 accounts, all initialized with a value of zero:
@@ -23,8 +23,7 @@ CRCs are sold when a spot buyer purchases them. Spot buyers may purchase some or
 If supplier has a positive balance of NORI, then it sells to Coin Exchange when market_price > marginal_cost
 
 
-
-##Spot Buyer: 
+## Spot Buyer: 
 Purchases CRCs and retires them
 
 Create 2 accounts, initialized w/ value of zero:
@@ -45,8 +44,7 @@ Spot buyer "consumes" CRCs (in the parlance of ABCE), logs consumption of CRCs a
 If spot buyer has a positive NORI balance, then it sells to Coin Exchange when market_price > target_price 
 
 
-
-##Trader: 
+## Trader: 
 Composite of three types of traders we might expect to see in the market: a fundamental trader with long-term price expectation _u_, a momentum trader, and a noise trader
 
 Create 2 accounts, initialized w/ value of zero:
@@ -56,5 +54,5 @@ Create 2 accounts, initialized w/ value of zero:
 The objective of a trader is to maximize its returns (represented by SOV) by buying and selling NORI and converting NORI to SOV when market_price exceeds its target price.
 
 
-##Coin Exchange:
+## Coin Exchange:
 This is simply an exchange that converts NORI to SOV and vice versa. It is assumed that all markets are liquid, and accepts offers and bids at any price.
