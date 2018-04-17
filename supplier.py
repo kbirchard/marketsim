@@ -2,16 +2,10 @@ import pandas as pd
 import abce
 from abce import NotEnoughGoods
 
-# DO YOU NEED TO PUT THE SUPPLIER IMPORT STUFF HERE, IN THE SIMULATION FILE, OR SOMEWHERE ELSE?
-# IMPORT SUPPLIERS 
-# For some reason, the following code adds another ID column with a blank heading...
-# Create CRC dataframe
+# Create CRC dataframe from CSV, randomly select 100 suppliers, and output as a dictionary - records/tabular format
 supply = pd.read_csv('crc_supply.csv') 
-maxprice = 35 # NEEDS TO BE USER ENTERED, DEFAULT = $35
-filter_price = supply[supply.marginal_cost <= maxprice]
-# Randomly select 100 suppliers
-crc_sample = filter_price.sample(n=100)
-crc_sample.to_csv('crc_supply_sample.csv') # Output as a CSV? List? What's the best approach here?
+crc_sample = supply.sample(n=100) #EVENTUALLY WANT TO TAKE USER INPUT...FROM simulation.py?
+crc_list = crc_sample.to_dict('records')
 
 class Supplier(abce.Agent, abce.Firm, abce.Trade):
 	def init(self, simulation_parameters, agent_parameters):
@@ -23,7 +17,15 @@ class Supplier(abce.Agent, abce.Firm, abce.Trade):
 		self.nori_qty = 'nori_qty'
 		self.create('SOV', 0)
 		self.sov_qty = 'sov_qty'
-		self.expected_price = 'expected_price' # Expected_price over time_horizon
+		self.expected_price = 'expected_price' # Expected_price over time_horizon. This is set in simulation.py
+
+		#THIS IS WHERE I'M NOT SURE HOW TO PROCEED, BUT HERE GOES:
+
+#		for supplier i in suppliers:
+#			crc_qty = crc_list.marginal_qty
+#			marginal_cost = crc_list.marginal_cost
+
+#		Does this belong in the simulation code?
 
 	def list_crc(self):
 		""" List available CRCs for sale if expected_price is greater than marginal_cost """
