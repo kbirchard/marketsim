@@ -18,6 +18,7 @@ class Supplier(abce.Agent, abce.Firm, abce.Trade):
 		self.create('SOV', 0)
 		self.sov_qty = 'sov_qty'
 		self.expected_price = 'expected_price' # Expected_price over time_horizon. This is set in simulation.py
+		self.num_suppliers = simulation_parameters['num_suppliers'] # See line 7 above - what's the best way to address this?
 
 		#THIS IS WHERE I'M NOT SURE HOW TO PROCEED, BUT HERE GOES:
 
